@@ -53,9 +53,9 @@ Reassortment detection can be done by running the following code accordingly. Th
 
 This folder shows part of the results of our experiment.
 
-* DMk_seg_Asia.txt： The result of feature extraction of $seg$ segment.
+* DMk_seg_Asia.txt：The result of feature extraction of seg segment.
 
-* ClusterResultForAsia_seg.txt： The result of clustering $seg$ segment.
+* ClusterResultForAsia_seg.txt：The result of clustering seg segment.
 
 * isolatesCombinationsWithNameHostDetail-6ForAsia.xlsx：The epidemiological information and genotype of all viruses.
 
@@ -64,6 +64,12 @@ This folder shows part of the results of our experiment.
 ### validation
 
 Traditionally, reassortments are tested based on the nucleotide similarity between the sequence of each segment of the virus. In order to verify the effectiveness of our method, we compared the nucleotide similarity between the sequences in the clustering results. 
+
+* ClusterResultForAsia_MP.txt: The result of clustering MP segment.
+
+* CompareClusterResultWithSimilarity.py: Compare the nucleotide similarity between the sequences in the clustering results.
+
+* MP_Asia.mafft.fasta: The result of multiple sequence alignment of MP segments using MAFFT v7.037.
 
 * TypeSimilarity.txt: Including cluster_type, intra_type_similarity, inter_type_minSimilarity, inter_type_maxSimilarity, inter_type_meanSimilarity, if_inter>intra+0.01. intra_type_similarity is the similarity between sequences within the type. inter_type_minSimilarity is the minimum value of inter-type similarity, inter_type_maxSimilarity is the maximum value of inter-type similarity, if the maximum value of inter-type similarity is 0.01 higher than the intra-class similarity, then if_inter>intra+0.01 is set to True, otherwise it is set to False. 
 
