@@ -19,7 +19,7 @@ def calNucleotideSimilarity(seqi, seqj):
 					l = l -1
 		return float(same/l)
 
-fread = open('ClusterResultForAsia_MP.txt','r')
+fread = open('../ClusterResultForAsia_MP.txt','r')
 lines = fread.readlines()
 fread.close()
 dictTypeIsolate = {}
@@ -69,6 +69,7 @@ for isolateIDi in dictIsolateType:
 
 
 dictypeMeansimilarity = {}
+fwrite = open('IntraTypeSimilarity.txt','w')
 for type in dictTypeIsolate:
     # print(type)
     similarity = 0
@@ -86,6 +87,7 @@ for type in dictTypeIsolate:
         mean_similarity = similarity/num
     # print(type,mean_similarity)
     dictypeMeansimilarity[type] = mean_similarity
+    fwrite.write(str(mean_similarity)+'\n')
 
 dictTypeIJdistance = {}
 for typei in dictTypeIsolate:
@@ -108,32 +110,42 @@ for typei in dictTypeIsolate:
 
 # print(dictTypeIJdistance)
 
-fwrite = open('TypeSimilarity.txt','w')
-fwrite.write('cluster_type\tintra_type_similarity\tinter_type_minSimilarity\tinter_type_maxSimilarity\tinter_type_meanSimilarity\tif_inter>intra+0.01\n')
+fwrite = open('TypeMatrix.txt', 'w')
 for typei in dictTypeIsolate:
-    fwrite.write(str(typei)+'\t')
-    minsimilarity = 1
-    maxsimialrtiy = 0
-    similarity = 0
-    num = 0
     for typej in dictTypeIsolate:
-        if typei != typej:
-            if dictTypeIJdistance[typei][typej] > maxsimialrtiy:
-                maxsimialrtiy = dictTypeIJdistance[typei][typej]
-            if dictTypeIJdistance[typei][typej] < minsimilarity:
-                minsimilarity = dictTypeIJdistance[typei][typej]
-            similarity = similarity + dictTypeIJdistance[typei][typej]
-            num = num + 1
-    similarity = similarity / num
-    # print(dictypeMeansimilarity[typei],minsimilarity,maxsimialrtiy)
-    fwrite.write(str(dictypeMeansimilarity[typei])+'\t'+str(minsimilarity)+'\t'+str(maxsimialrtiy)+'\t'+str(similarity)+'\t')
-    # print(dictypeMeansimilarity[type],min(dictTypeIJdistance[type].values()),max(dictTypeIJdistance[type].values()))
-    if maxsimialrtiy > dictypeMeansimilarity[typei] + 0.01:
-        fwrite.write('True\n')
-    else:
-        fwrite.write('False\n')
+        if typei == typej:
+            fwrite.write('1' + '\t')
+        else:
+            fwrite.write(str(dictTypeIJdistance[typei][typej]) + '\t')
+    fwrite.write('\n')
+fwrite.close()
 
-end = time.time()
-print(end - begin)
-
-print(min(dictypeMeansimilarity.values()),max(dictypeMeansimilarity.values()))
+# fwrite = open('TypeSimilarity.txt','w')
+# fwrite.write('cluster_type\tintra_type_similarity\tinter_type_minSimilarity\tinter_type_maxSimilarity\tinter_type_meanSimilarity\tif_inter>intra+0.01\n')
+# for typei in dictTypeIsolate:
+#     fwrite.write(str(typei)+'\t')
+#     minsimilarity = 1
+#     maxsimialrtiy = 0
+#     similarity = 0
+#     num = 0
+#     for typej in dictTypeIsolate:
+#         if typei != typej:
+#             if dictTypeIJdistance[typei][typej] > maxsimialrtiy:
+#                 maxsimialrtiy = dictTypeIJdistance[typei][typej]
+#             if dictTypeIJdistance[typei][typej] < minsimilarity:
+#                 minsimilarity = dictTypeIJdistance[typei][typej]
+#             similarity = similarity + dictTypeIJdistance[typei][typej]
+#             num = num + 1
+#     similarity = similarity / num
+#     # print(dictypeMeansimilarity[typei],minsimilarity,maxsimialrtiy)
+#     fwrite.write(str(dictypeMeansimilarity[typei])+'\t'+str(minsimilarity)+'\t'+str(maxsimialrtiy)+'\t'+str(similarity)+'\t')
+#     # print(dictypeMeansimilarity[type],min(dictTypeIJdistance[type].values()),max(dictTypeIJdistance[type].values()))
+#     if maxsimialrtiy > dictypeMeansimilarity[typei] + 0.01:
+#         fwrite.write('True\n')
+#     else:
+#         fwrite.write('False\n')
+#
+# end = time.time()
+# print(end - begin)
+#
+# print(min(dictypeMeansimilarity.values()),max(dictypeMeansimilarity.values()))

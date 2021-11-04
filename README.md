@@ -69,8 +69,12 @@ Traditionally, reassortments are tested based on the nucleotide similarity betwe
 
 * CompareClusterResultWithSimilarity.py: Compare the nucleotide similarity between the sequences in the clustering results.
 
+* IntraInterTypeSimilarityFigure.py：Construct a statistical analysis graph of the intra-type similarity and the inter-type similarity.
+
+* IntraTypeSimilarity.txt: Intra-type similarity of each type.
+
 * MP_Asia.mafft.fasta: The result of multiple sequence alignment of MP segments using MAFFT v7.037.
 
-* TypeSimilarity.txt: Including cluster_type, intra_type_similarity, inter_type_minSimilarity, inter_type_maxSimilarity, inter_type_meanSimilarity and if_inter>intra+0.01. intra_type_similarity is the similarity between sequences within the type. inter_type_minSimilarity is the minimum value of inter-type similarity, inter_type_maxSimilarity is the maximum value of inter-type similarity, if the maximum value of inter-type similarity is 0.01 higher than the intra-class similarity, then if_inter>intra+0.01 is set to True, otherwise it is set to False. 
+* TypeMatrix.txt: Inter-type similarity matrix.
 
-For MP segment sequences, our method divides them into 402 types, where the intra-type similarity of each type is between 93%-100%. Among them, the intra-type similarity of 326 types is higher than all the inter-type similarities. For the other 76 types, although some of the inter-type similarity exceeds the intra-type similarity, it is basically the same as the intra-type similarity, and the difference in similarity is within 1%. Therefore, our method can group the sequences with high nucleotide similarity together, and further subdivide the sequences with high nucleotide similarity.
+For MP fragment sequences, our method divides them into 402 types. From IntraInterSimilarity.jpg we can see, the average nucleotide similarity of sequences in each type is greater than the average nucleotide similarity of sequences in different type, which proves that our method can cluster the sequences with high nucleotide similarity together.
