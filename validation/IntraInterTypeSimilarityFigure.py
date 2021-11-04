@@ -39,6 +39,7 @@ y = [IntraTypeSimilarity_mean,InterTypeSimilarity_mean]
 std_err = [IntraTypeSimilarity_std,InterTypeSimilarity_std]
 
 error_params = dict(ecolor = '0.2', capsize = 12)
-plt.bar(x, y, width=0.03, color = 'gray', yerr = std_err, error_kw = error_params, tick_label = ['IntraTypeSimilarity','InterTypeSimilarity'], alpha=0.7)
+plt.bar(x, y, width=0.03, color = ['blue'], yerr = std_err, error_kw = error_params, tick_label = ['IntraTypeSimilarity','InterTypeSimilarity'], alpha=0.7)
+plt.ylim(0.5,)
 
-plt.savefig('IntraInterSimilarity.jpg')
+plt.savefig('IntraInterSimilarity.pdf')

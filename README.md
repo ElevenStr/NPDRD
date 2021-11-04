@@ -77,4 +77,4 @@ Traditionally, reassortments are tested based on the nucleotide similarity betwe
 
 * TypeMatrix.txt: Inter-type similarity matrix.
 
-For MP fragment sequences, our method divides them into 402 types. From IntraInterSimilarity.jpg we can see, the average nucleotide similarity of sequences in each type is greater than the average nucleotide similarity of sequences in different type, which proves that our method can cluster the sequences with high nucleotide similarity together.
+For MP fragment sequences, our method divides them into 402 types. From IntraInterSimilarity.pdf we can see, the average nucleotide similarity of sequences in each type is greater than the average nucleotide similarity of sequences in different type, which proves that our method can cluster the sequences with high nucleotide similarity together.
